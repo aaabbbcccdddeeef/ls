@@ -20,7 +20,8 @@ server::server(QWidget *parent) :
     lastpoint.setY(0);
     endpoint.setX(0);
     endpoint.setY(0);
-
+    //开启鼠标追踪，用于鼠标移动到头部矩形headrectitem时即时显示tooltip
+    setMouseTracking(true);
 }
 
 server::~server()
@@ -94,7 +95,7 @@ void server::updatetabelwidget(QByteArray mess, tcpsocket * clientsocket,QString
 
                     //设置头部矩形,并添加到场景中
                     //scene.addRect(tem.x-10,tem.y-10,20,20,pen,brush);
-                    tem.headRect = new headRectItem(tem.x-10,tem.y-10,20,20,i);
+                    tem.headRect = new headRectItem(tem.x-10,tem.y-10,20,20,i,tem.color);
                     tem.headRect->setPen(pen);
                     tem.headRect->setBrush(brush);
                     scene.addItem(tem.headRect);
@@ -145,7 +146,7 @@ void server::updatetabelwidget(QByteArray mess, tcpsocket * clientsocket,QString
 
                     //添新建当前轨迹的头部矩形，并添加到场景scene中
                     //tem.headRect = scene.addRect(endpoint.x()-10,endpoint.y()-10,20,20,pen,brush);
-                    tem.headRect = new headRectItem(tem.x-10,tem.y-10,20,20,i);
+                    tem.headRect = new headRectItem(tem.x-10,tem.y-10,20,20,i,tem.color);
                     tem.headRect->setPen(pen);
                     tem.headRect->setBrush(brush);
                     scene.addItem(tem.headRect);
@@ -169,6 +170,7 @@ void server::updatetabelwidget(QByteArray mess, tcpsocket * clientsocket,QString
                     qDebug() << "卫星id" << i.key() << endl;
                     //将场景scene显示在server.ui的graphicsView中，即是画出图像
                     ui->graphicsView->setRenderHint(QPainter::Antialiasing);//抗锯齿
+                    ui->graphicsView->setMouseTracking(true);
                     ui->graphicsView->setScene(&scene);
                 }
 
