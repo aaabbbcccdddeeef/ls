@@ -18,6 +18,7 @@
 #include <QPixmap>
 #include <QGraphicsRectItem>
 #include <QAbstractGraphicsShapeItem>
+#include <QEventLoop>
 
 namespace Ui {
 class server;

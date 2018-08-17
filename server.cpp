@@ -324,4 +324,31 @@ void server::tablewidget_clicked(int row, int colum)
         }
     }
 
+    if(colum == 0)
+    {
+        QString id = ui->tableWidget->item(row,0)->text();
+        //高亮显示该id的headRectItem,并显示tooptip
+        //找到该id的headRectItem
+        QHashIterator <QString,inf> i(locationlist);
+        while(i.hasNext())
+        {
+            i.next();
+            if(i.key()==id)
+            {
+                QColor c = i.value().headRect->pen().color();
+                i.value().headRect->setPen( QPen( c.lighter(130) ) );
+                i.value().headRect->setBrush( QBrush( c.lighter(130) ) );
+                //QToolTip::showText(i.value().headRect->pos().toPoint(),id);
+
+                QEventLoop eventloop;
+                QTimer::singleShot(500, &eventloop, SLOT(quit()));
+                eventloop.exec();
+
+                i.value().headRect->setPen( QPen(c) );
+                i.value().headRect->setBrush( QBrush( c ) );
+            }
+        }
+
+    }
+
 }
