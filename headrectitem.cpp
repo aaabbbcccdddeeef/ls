@@ -8,16 +8,16 @@ headRectItem::headRectItem(qreal x, qreal y, qreal width, qreal height,
 {
     setAcceptHoverEvents(true);
     cc=color;
-//    ii=i;
-//    xx=x;
-//    yy=y;
+    text=i.key();
+    xx=x;
+    yy=y;
 }
 
 void headRectItem::hoverEnterEvent(QGraphicsSceneHoverEvent *event)
 {
-//    QString text = "卫星id: " + ii.key() + "\n"
-//            + "当前坐标: (" + QString::number(xx+10) +","+QString::number(yy+10)+")" ;
-//    QToolTip::showText(event->scenePos(),text);
+    QString text = "卫星id: " + headRectItem::text + "\n"
+            + "当前坐标: (" + QString::number(xx+10) +","+QString::number(yy+10)+")" ;
+    QToolTip::showText(event->screenPos(),text);
     setPen(QPen(cc.lighter(130)));
     setBrush(QBrush(cc.lighter(130)));
 }

@@ -25,9 +25,9 @@ protected:
     void hoverEnterEvent(QGraphicsSceneHoverEvent *event);
     void hoverLeaveEvent(QGraphicsSceneHoverEvent *event);
     QColor cc;
-//    QHashIterator<QString, tcpsocket *> ii;
-//    qreal xx;
-//    qreal yy;
+    QString text;
+    qreal xx;
+    qreal yy;
 
 };
 
