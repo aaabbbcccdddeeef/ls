@@ -40,6 +40,7 @@ private slots:
     void on_pushButton_2_clicked();
     void tablewidget_clicked(int,int);
 
+
 private:
     Ui::server *ui;
     QUdpSocket *udpsender;              //udp发送

@@ -304,7 +304,8 @@ void server::tablewidget_clicked(int row, int colum)
         tcpServer->tcpClientSocketList.remove(id);
         qDebug()<<row<<colum;
     }
-    if(colum == 6){
+    if(colum == 6)
+    {
         Instruction tem;
         tem.setWindowTitle("给"+ui->tableWidget->item(row,0)->text()+"发送指令");
         if(tem.exec() == QDialog::Accepted){
